@@ -79,7 +79,9 @@ const calculationInvestorInput = (inputValues) => {
     let fv1 = inputValues.goalCost * (Math.pow((1 + inflationPercent / 100), ageDifference));
     let fv2 = inputValues.possibleInvestment * (Math.pow((1 + estimatedPercent / 100), ageDifference));
     let fv = fv1 - fv2;
-    let pmt = (fv*r)/(Math.pow((1+r),npr)-1);
+    // let pmt = (fv*r)/(Math.pow((1+r),npr)-1);
+
+    let pmt = fv*Math.pow();
     
     console.log('fv1=>', fv1, 'fv2=>', fv2, 'fv=>', fv, 'pmt=>',pmt);
 
@@ -217,3 +219,6 @@ wealthDemographicScoreEvaluate.addEventListener("click", function () {
     wealthDemographicCalculation.style.display = "none";
 })
 
+const d = () => {
+    document.getElementById('exampleModal').modal('hide');
+}
