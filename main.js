@@ -32,22 +32,21 @@ const getSetRadioButtonValue = (inputID, outputID) => {
     }
 }
 const getInputValue = () => {
-    let name = callInputID('name-display');
-    let age = parseFloat(callInputID('age-display'));
-    let annualIncome = parseFloat(callInputID('annual-income-display'));
-    let meetGoalAge = parseFloat(callInputID('meet-goal-at-age-display'));
-    let goalCost = parseFloat(callInputID('goal-cost-display'));
-    let possibleInvestment = parseFloat(callInputID('possible-investment-display'));
-    let risk = callInputID('risk-display');
-    console.log(risk);
+    // 
+    
+    const getInputValues = Array.from(document.getElementsByClassName('display-output'));
+    let storeInputValues = [];
+    getInputValues.forEach(getValue => storeInputValues.push(getValue.innerText));
 
+    [yourName,annualIncome,age,ageGoal,goalCost,possibleInvestment,risk] = storeInputValues;
+    console.log(storeInputValues);
     const inputValues = {
-        name: name,
-        age: age,
-        annualIncome: annualIncome,
-        ageGoal: meetGoalAge,
-        goalCost: goalCost,
-        possibleInvestment: possibleInvestment,
+        name: yourName,
+        age: parseFloat(age),
+        annualIncome: parseFloat(annualIncome),
+        ageGoal: parseFloat(ageGoal),
+        goalCost: parseFloat(goalCost),
+        possibleInvestment: parseFloat(possibleInvestment),
         risk: risk,
     }
     console.log(inputValues);
@@ -75,13 +74,13 @@ const calculationInvestorInput = (inputValues) => {
     let ageDifference = inputValues.ageGoal - inputValues.age;
     let npr = ageDifference * 12;
     let r = (estimatedPercent / (100 * 12));
-
+    console.log('agedif=>',ageDifference,'npr=>', npr, 'r=>',r);
     let fv1 = inputValues.goalCost * (Math.pow((1 + inflationPercent / 100), ageDifference));
     let fv2 = inputValues.possibleInvestment * (Math.pow((1 + estimatedPercent / 100), ageDifference));
     let fv = fv1 - fv2;
-    // let pmt = (fv*r)/(Math.pow((1+r),npr)-1);
+    let pmt = (fv*r)/(Math.pow((1+r),npr)-1);
 
-    let pmt = fv*Math.pow();
+    // let pmt = fv*Math.pow();
     
     console.log('fv1=>', fv1, 'fv2=>', fv2, 'fv=>', fv, 'pmt=>',pmt);
 
