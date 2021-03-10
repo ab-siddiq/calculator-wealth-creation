@@ -103,8 +103,8 @@ const showOutput = (outputValues) => {
     console.log(outputValues);
     document.querySelector('.output-top').innerHTML = `
         <p class="text-justify"> 
-        Dear Mr/ Mrs. <strong> ${outputValues.name} </strong>When your Child will be at the Age of <strong> ${outputValues.ageGoal}</strong> You are to have <strong>${outputValues.fv1} Taka </strong>For the Education Plan
-        The Inflation is considered at <strong>${outputValues.inflationPercent}%</strong> , And The return is Estimated to be <strong>${outputValues.estimatedPercent}%</strong>
+        Dear Mr/ Mrs. <strong> ${outputValues.name} </strong>When your Child will be at the Age of <strong> ${outputValues.ageGoal}</strong> You are to have <strong>${outputValues.fv1} Taka </strong>to Meet Your Goal <br>
+        <br> <br> The Inflation is considered at <strong>${outputValues.inflationPercent}%</strong> , And The return is Estimated to be <strong>${outputValues.estimatedPercent}%</strong>
         </p>
         `
     document.querySelector('.output-bottom-left').innerHTML = `
