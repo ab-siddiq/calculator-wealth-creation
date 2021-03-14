@@ -74,25 +74,34 @@ const calculationInvestorInput = (inputValues) => {
         estimatedPercent = 15;
     }
     
-
+    // console.log(inputValues.goalCost,'goal');
+    
     let ageDifference = inputValues.ageGoal - inputValues.age;
-    let npr = ageDifference * 12;
+    // console.log(ageDifference,'age diff');
+    let npr = (ageDifference * 12);
     let r = (estimatedPercent / (100 * 12));
     console.log('agedif=>',ageDifference,'npr=>', npr, 'r=>',r);
-    let cfv1 = inputValues.goalCost * (Math.pow((1 + inflationPercent / 100), ageDifference));
+    let cfv1 = inputValues.goalCost * (Math.pow((1 + (inflationPercent / 100)), ageDifference));
+    // console.log((Math.pow((1 + (inflationPercent / 100)), ageDifference)),'pow')
+    // console.log((Math.pow((1 + (inflationPercent / 100)), ageDifference))*inputValues.goalCost,'multi')
     let cfv2 = inputValues.possibleInvestment * (Math.pow((1 + estimatedPercent / 100), ageDifference));
     let cfv = cfv1 - cfv2;
     let cpmt = (cfv * r) / (Math.pow((1 + r), npr) - 1);
-    
-    fv1 = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(cfv1);
-    fv2 = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(cfv2);
-    fv = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(cfv);
-    pmt = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(cpmt);
-
+    console.log(cfv1, 'fv 1 cons');
+    let ccfv1 = cfv1.toFixed(3);
+    let ccfv2 = cfv2.toFixed(3);
+    let ccfv = cfv.toFixed(3);
+    let ccpmt = cpmt.toFixed(3);
+    fv1 = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(ccfv1);
+    fv2 = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(ccfv2);
+    fv = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(ccfv);
+    pmt = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(ccpmt);
+    // console.log(fv1, 'fv math  cons');
     // let pmt = fv*Math.pow();
     
     console.log('fv1=>', fv1, 'fv2=>', fv2, 'fv=>', fv, 'pmt=>',pmt);
-
+    // let g = parseFloat(fv1);
+    // console.log(g, 'ganja');
 
 
     const outputValues = {
@@ -103,7 +112,7 @@ const calculationInvestorInput = (inputValues) => {
         inflationPercent: inflationPercent,
         estimatedPercent: estimatedPercent,
         pmt: pmt,
-        possibleInvest: inputValues.possibleInvestment,
+        possibleInvestment: inputValues.possibleInvestment,
     }
     showOutput(outputValues);
 }
