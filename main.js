@@ -1,4 +1,7 @@
-const user = (getID, setID) =>{
+
+
+
+const user = (getID, setID) => {
     document.getElementById(setID).innerHTML = document.getElementById(getID).value;
     document.getElementById(setID).style.color = '#EF4B27';
     document.getElementById(setID).style.textTransform = 'uppercase';
@@ -92,6 +95,7 @@ const calculationInvestorInput = (inputValues) => {
     let ccfv2 = cfv2.toFixed(3);
     let ccfv = cfv.toFixed(3);
     let ccpmt = cpmt.toFixed(3);
+    
     fv1 = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(ccfv1);
     fv2 = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(ccfv2);
     fv = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 15 }).format(ccfv);
@@ -136,12 +140,12 @@ const showOutput = (outputValues) => {
         
         </p>
     `
-    // document.querySelector('.fv2').innerHTML = `
-    //     <p>
-    //     <strong>${outputValues.fv2}
-    //     </p>
+    document.querySelector('.fv2').innerHTML = `
+        <p>
+        <strong>${outputValues.fv2}
+        </p>
     
-    // `
+    `
 }
 
 
@@ -220,3 +224,40 @@ function setRisk(id) {
 }
 
 
+// var doc = new jsPDF();
+
+//  function saveDiv(divId, title) {
+//  doc.fromHTML(`<html><head><title>${title}</title></head><body>` + document.getElementById(divId).innerHTML + `</body></html>`);
+//  doc.save('div.pdf');
+// }
+
+// function download(file, text) { 
+              
+//     //creating an invisible element 
+//     var element = document.createElement('a'); 
+//     element.setAttribute('href',  
+//     'data:text/plain;charset=utf-8, ' 
+//     + encodeURIComponent(text)); 
+//     element.setAttribute('download', file); 
+  
+//     // Above code is equivalent to 
+//     // <a href="path of file" download="file name"> 
+  
+//     document.body.appendChild(element); 
+  
+//     //onClick property 
+//     element.click(); 
+  
+//     document.body.removeChild(element); 
+// } 
+  
+// // Start file download. 
+// document.getElementById("download") 
+// .addEventListener("click", function() { 
+//     // Generate download of hello.txt  
+//     // file with some content 
+//     var text = document.getElementById("output-download").value; 
+//     var filename = "GFG.txt"; 
+  
+//     download(filename, text); 
+// }, false); 
